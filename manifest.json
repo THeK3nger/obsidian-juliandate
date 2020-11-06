@@ -1,7 +1,7 @@
 {
-  "id": "your-obsidian-plugin",
-  "name": "Obsidian Plugin Template",
-  "description": "A Simple Template for Plugins",
+  "id": "obsidian-juliandate",
+  "name": "Julian Date",
+  "description": "Simple hotkey to insert the current Julian Date",
   "isDesktopOnly": false,
   "js": "main.js"
 }
