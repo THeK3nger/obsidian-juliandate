@@ -18,4 +18,4 @@ Then, you can compile the plugin with:
 npm run build
 ```
 
-This will create a `main.js` file in the project root. That is the entry point of your plugin.
+This will create a `main.js` file in the project root. That is the entry point of the Julian Date plugin.
