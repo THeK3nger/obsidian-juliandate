@@ -1,4 +1,11 @@
-import { App, MarkdownView, Plugin, PluginSettingTab, Setting } from "obsidian";
+import {
+  App,
+  MarkdownView,
+  Workspace,
+  Plugin,
+  PluginSettingTab,
+  Setting,
+} from "obsidian";
 
 export default class JulianDate extends Plugin {
   setting: JulianDateSettings;
@@ -7,7 +14,10 @@ export default class JulianDate extends Plugin {
   async onload() {
     console.log("Loading Obsidian-JulianDay");
 
-    this.setting = (await this.loadData()) || new JulianDateSettings();
+    this.setting = (await this.loadData()) || {
+      epochCorrection: 0,
+      decimalPlaces: 5,
+    };
     this.addSettingTab(new JulianDateSettingsTab(this.app, this));
 
     this.addCommand({
@@ -28,14 +38,12 @@ export default class JulianDate extends Plugin {
   }
 
   writeJulianDay() {
-    const view = this.app.workspace.activeLeaf.view;
-    if (view instanceof MarkdownView) {
-      // Do work here
-      const editor = view.sourceMode.cmEditor;
+    const view = this.app.workspace.getActiveViewOfType(MarkdownView);
+    // Do work here
+    const editor = view.sourceMode.cmEditor;
 
-      const newString = this.computeJulianDay();
-      editor.replaceSelection(newString, "start");
-    }
+    const newString = this.computeJulianDay();
+    editor.replaceSelection(newString, "end");
   }
 
   computeJulianDay(): string {
@@ -48,9 +56,9 @@ export default class JulianDate extends Plugin {
   }
 }
 
-class JulianDateSettings {
-  epochCorrection = 0;
-  decimalPlaces = 5;
+interface JulianDateSettings {
+  epochCorrection: number;
+  decimalPlaces: number;
 }
 
 class JulianDateSettingsTab extends PluginSettingTab {
