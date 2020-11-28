@@ -39,11 +39,14 @@ export default class JulianDate extends Plugin {
 
   writeJulianDay() {
     const view = this.app.workspace.getActiveViewOfType(MarkdownView);
-    // Do work here
-    const editor = view.sourceMode.cmEditor;
 
-    const newString = this.computeJulianDay();
-    editor.replaceSelection(newString, "end");
+    if (view) {
+      // Do work here
+      const editor = view.sourceMode.cmEditor;
+
+      const newString = this.computeJulianDay();
+      editor.replaceSelection(newString, "end");
+    }
   }
 
   computeJulianDay(): string {

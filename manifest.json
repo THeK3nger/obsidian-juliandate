@@ -1,6 +1,6 @@
 {
   "id": "obsidian-juliandate",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "minAppVersion": "0.9.16",
   "name": "Julian Date",
   "description": "Simple hotkey to insert the current Julian Date",
