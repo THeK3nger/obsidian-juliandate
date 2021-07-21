@@ -95,7 +95,7 @@ class JulianDateSettingsTab extends PluginSettingTab {
       .setName("Decimal Places")
       .setDesc("Number of decimal places in the output.")
       .addText((text) =>
-        text.setValue(String(settings.epochCorrection)).onChange((value) => {
+        text.setValue(String(settings.decimalPlaces)).onChange((value) => {
           if (!isNaN(Number(value))) {
             settings.decimalPlaces = Number(value);
             this.plugin.saveData(settings);
