@@ -74,6 +74,9 @@ class JulianDateSettingsTab extends PluginSettingTab {
 
   display(): void {
     const { containerEl } = this;
+
+    containerEl.empty()
+
     const settings = this.plugin.setting;
     new Setting(containerEl)
       .setName("Epoch Correction")
